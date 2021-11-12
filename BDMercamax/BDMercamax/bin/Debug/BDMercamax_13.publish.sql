@@ -248,12 +248,13 @@ PRINT N'Creando Tabla [dbo].[Cliente]...';
 
 GO
 CREATE TABLE [dbo].[Cliente] (
-    [cc_cliente]               INT            NOT NULL,
-    [nombre_apellido]          NVARCHAR (MAX) NOT NULL,
-    [telefono_cliente]         NVARCHAR (MAX) NOT NULL,
-    [direccion_cliente]        NVARCHAR (MAX) NOT NULL,
-    [fecha_nacimiento_cliente] DATE           NOT NULL,
-    [puntos_acumulados]        INT            NOT NULL,
+    [cc_cliente]              INT            NOT NULL,
+    [nombre_apellido_cliente] NVARCHAR (MAX) NOT NULL,
+    [telefono_cliente]        NVARCHAR (MAX) NOT NULL,
+    [email_cliente]           NVARCHAR (MAX) NOT NULL,
+    [direccion_cliente]       NVARCHAR (MAX) NOT NULL,
+    [fecha_nacimiento]        DATE           NOT NULL,
+    [puntos_acumulados]       INT            NOT NULL,
     PRIMARY KEY CLUSTERED ([cc_cliente] ASC)
 );
 
@@ -281,12 +282,12 @@ PRINT N'Creando Tabla [dbo].[LugarStock]...';
 
 GO
 CREATE TABLE [dbo].[LugarStock] (
-    [id_lugar]         INT           NOT NULL,
-    [barcode_producto] INT           NOT NULL,
-    [cantidad_bodega]  INT           NOT NULL,
-    [cantidad_gondola] INT           NOT NULL,
-    [seccion_bodega]   VARCHAR (MAX) NOT NULL,
-    [seccion_gondola]  VARCHAR (MAX) NOT NULL,
+    [id_lugar]         INT            NOT NULL,
+    [barcode_producto] INT            NOT NULL,
+    [cantidad_bodega]  INT            NOT NULL,
+    [cantidad_gondola] INT            NOT NULL,
+    [sección_bodega]   NVARCHAR (MAX) NOT NULL,
+    [sección_gondola]  NVARCHAR (MAX) NOT NULL,
     PRIMARY KEY CLUSTERED ([id_lugar] ASC),
     UNIQUE NONCLUSTERED ([barcode_producto] ASC)
 );
@@ -311,20 +312,20 @@ CREATE TABLE [dbo].[Personal] (
 
 
 GO
-PRINT N'Creando Tabla [dbo].[Productos]...';
+PRINT N'Creando Tabla [dbo].[Producto]...';
 
 
 GO
-CREATE TABLE [dbo].[Productos] (
-    [id_productos]      INT             NOT NULL,
-    [nombre_producto]   NVARCHAR (MAX)  NULL,
-    [fecha_llegada]     DATE            NULL,
-    [fecha_vencimiento] DATE            NULL,
-    [barcode]           INT             NULL,
-    [precio]            DECIMAL (18, 2) NULL,
-    [nit]               INT             NULL,
-    [id_tipo]           INT             NULL,
-    PRIMARY KEY CLUSTERED ([id_productos] ASC)
+CREATE TABLE [dbo].[Producto] (
+    [id_producto]       INT             NOT NULL,
+    [nombre_producto]   NVARCHAR (MAX)  NOT NULL,
+    [fecha_llegada]     DATE            NOT NULL,
+    [fecha_vencimiento] DATE            NOT NULL,
+    [barcode]           INT             NOT NULL,
+    [precio]            DECIMAL (18, 2) NOT NULL,
+    [nit]               INT             NOT NULL,
+    [id_tipo]           INT             NOT NULL,
+    PRIMARY KEY CLUSTERED ([id_producto] ASC)
 );
 
 
@@ -350,10 +351,11 @@ PRINT N'Creando Tabla [dbo].[Tipo_Producto]...';
 
 GO
 CREATE TABLE [dbo].[Tipo_Producto] (
-    [id_tipo]     INT            NOT NULL,
-    [categoria]   NVARCHAR (MAX) NOT NULL,
-    [perecedero ] BIT            NOT NULL,
-    [iva]         INT            NOT NULL,
+    [id_tipo]    INT            NOT NULL,
+    [categoria]  NVARCHAR (MAX) NOT NULL,
+    [perecedero] BIT            NOT NULL,
+    [iva]        INT            NOT NULL,
+    [puntos]     INT            NOT NULL,
     PRIMARY KEY CLUSTERED ([id_tipo] ASC)
 );
 
@@ -405,17 +407,17 @@ PRINT N'Creando Clave externa [dbo].[FK_Producto_ToTable]...';
 
 
 GO
-ALTER TABLE [dbo].[Productos]
+ALTER TABLE [dbo].[Producto]
     ADD CONSTRAINT [FK_Producto_ToTable] FOREIGN KEY ([nit]) REFERENCES [dbo].[Proveedor] ([nit]);
 
 
 GO
-PRINT N'Creando Clave externa [dbo].[FK_Productos_ToTable1]...';
+PRINT N'Creando Clave externa [dbo].[FK_Producto_ToTable_1]...';
 
 
 GO
-ALTER TABLE [dbo].[Productos]
-    ADD CONSTRAINT [FK_Productos_ToTable1] FOREIGN KEY ([id_tipo]) REFERENCES [dbo].[Tipo_Producto] ([id_tipo]);
+ALTER TABLE [dbo].[Producto]
+    ADD CONSTRAINT [FK_Producto_ToTable_1] FOREIGN KEY ([id_tipo]) REFERENCES [dbo].[Tipo_Producto] ([id_tipo]);
 
 
 GO
@@ -428,41 +430,27 @@ ALTER TABLE [dbo].[Venta]
 
 
 GO
--- Paso de refactorización para actualizar el servidor de destino con los registros de transacciones implementadas
+PRINT N'Creando Procedimiento [dbo].[Login]...';
 
-IF OBJECT_ID(N'dbo.__RefactorLog') IS NULL
-BEGIN
-    CREATE TABLE [dbo].[__RefactorLog] (OperationKey UNIQUEIDENTIFIER NOT NULL PRIMARY KEY)
-    EXEC sp_addextendedproperty N'microsoft_database_tools_support', N'refactoring log', N'schema', N'dbo', N'table', N'__RefactorLog'
-END
-GO
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '60cb5912-f082-4ccd-ba27-05eb5e78a91a')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('60cb5912-f082-4ccd-ba27-05eb5e78a91a')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'da54039b-0048-4a80-8d65-44e484e211c4')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('da54039b-0048-4a80-8d65-44e484e211c4')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '74698933-ae52-49bd-8ebd-41aca9017e61')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('74698933-ae52-49bd-8ebd-41aca9017e61')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '1c5bdbd3-afbb-46d8-996e-d2bbcc64b34b')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('1c5bdbd3-afbb-46d8-996e-d2bbcc64b34b')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'd296b056-9463-43db-9c26-1639495ef9d5')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('d296b056-9463-43db-9c26-1639495ef9d5')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '0658f65d-f4af-4864-9f94-b0f4d993b03a')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('0658f65d-f4af-4864-9f94-b0f4d993b03a')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '09dcd52e-f11f-4de4-8b3c-71f1ddb48b8b')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('09dcd52e-f11f-4de4-8b3c-71f1ddb48b8b')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'a41b4216-5dff-4f96-a11a-a994b30a128c')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('a41b4216-5dff-4f96-a11a-a994b30a128c')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'fe76b847-b465-4437-8444-9016c46f2a37')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('fe76b847-b465-4437-8444-9016c46f2a37')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '3ee370ef-64c4-4c6f-ae71-328e2d4230b4')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('3ee370ef-64c4-4c6f-ae71-328e2d4230b4')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '18bb244a-637a-4656-854a-039eb4a2c4df')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('18bb244a-637a-4656-854a-039eb4a2c4df')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'e90e3893-3c12-4278-85bd-b3201fd4ed8b')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('e90e3893-3c12-4278-85bd-b3201fd4ed8b')
 
 GO
+CREATE PROCEDURE [dbo].[Login]
+	@user int,
+	@pass nvarchar(max)
+AS
+	SELECT cc_personal,cargo,nombre_apellido_personal FROM Personal WHERE cc_personal=@user and password=@pass
+RETURN 0
+GO
+PRINT N'Creando Procedimiento [dbo].[LoginCliente]...';
 
+
+GO
+CREATE PROCEDURE [dbo].[LoginCliente]
+	@user int
+	
+AS
+	SELECT cc_cliente, nombre_apellido_cliente FROM Cliente WHERE cc_Cliente=@user
+RETURN 0
 GO
 DECLARE @VarDecimalSupported AS BIT;
 

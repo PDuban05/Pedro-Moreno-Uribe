@@ -4,6 +4,6 @@
     [barcode_producto] INT NOT NULL UNIQUE, 
     [cantidad_bodega] INT NOT NULL, 
     [cantidad_gondola] INT NOT NULL, 
-    [seccion_bodega] VARCHAR(MAX) NOT NULL, 
-    [seccion_gondola] VARCHAR(MAX) NOT NULL
+    [sección_bodega] NVARCHAR(MAX) NOT NULL, 
+    [sección_gondola] NVARCHAR(MAX) NOT NULL
 )

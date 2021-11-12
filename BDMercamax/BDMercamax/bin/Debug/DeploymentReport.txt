@@ -14,7 +14,7 @@
        [dbo].[Facturacion] (Tabla)
        [dbo].[LugarStock] (Tabla)
        [dbo].[Personal] (Tabla)
-       [dbo].[Productos] (Tabla)
+       [dbo].[Producto] (Tabla)
        [dbo].[Proveedor] (Tabla)
        [dbo].[Tipo_Producto] (Tabla)
        [dbo].[Venta] (Tabla)
@@ -22,7 +22,7 @@
        [dbo].[FK_Facturacion_ToTable_1] (Clave externa)
        [dbo].[FK_Facturacion_ToTable_2] (Clave externa)
        [dbo].[FK_Producto_ToTable] (Clave externa)
-       [dbo].[FK_Productos_ToTable1] (Clave externa)
+       [dbo].[FK_Producto_ToTable_1] (Clave externa)
        [dbo].[FK_Venta_ToTable] (Clave externa)
 
 ** Acciones de compatibilidad
