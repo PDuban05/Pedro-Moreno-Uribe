@@ -9,10 +9,12 @@ G:\Mi unidad\Prac1\MercamaxApp\MercamaxApp\obj\Debug\MercamaxApp.exe
 G:\Mi unidad\Prac1\MercamaxApp\MercamaxApp\obj\Debug\MercamaxApp.pdb
 G:\Mi unidad\Prac1\MercamaxApp\MercamaxApp\obj\Debug\MercamaxApp.LoginForm.resources
 G:\Mi unidad\Prac1\MercamaxApp\MercamaxApp\obj\Debug\MercamaxApp.MainForm.resources
+G:\Mi unidad\Prac1\MercamaxApp\MercamaxApp\obj\Debug\MercamaxApp.AddClienteForm.resources
 D:\Users\Usuario\Desktop\prac1\prac2\Pedro-Moreno-Uribe\MercamaxApp\MercamaxApp\MercamaxApp\bin\Debug\MercamaxApp.exe.config
 D:\Users\Usuario\Desktop\prac1\prac2\Pedro-Moreno-Uribe\MercamaxApp\MercamaxApp\MercamaxApp\bin\Debug\MercamaxApp.exe
 D:\Users\Usuario\Desktop\prac1\prac2\Pedro-Moreno-Uribe\MercamaxApp\MercamaxApp\MercamaxApp\bin\Debug\MercamaxApp.pdb
 D:\Users\Usuario\Desktop\prac1\prac2\Pedro-Moreno-Uribe\MercamaxApp\MercamaxApp\MercamaxApp\obj\Debug\MercamaxApp.csproj.AssemblyReference.cache
+D:\Users\Usuario\Desktop\prac1\prac2\Pedro-Moreno-Uribe\MercamaxApp\MercamaxApp\MercamaxApp\obj\Debug\MercamaxApp.AddClienteForm.resources
 D:\Users\Usuario\Desktop\prac1\prac2\Pedro-Moreno-Uribe\MercamaxApp\MercamaxApp\MercamaxApp\obj\Debug\MercamaxApp.LoginForm.resources
 D:\Users\Usuario\Desktop\prac1\prac2\Pedro-Moreno-Uribe\MercamaxApp\MercamaxApp\MercamaxApp\obj\Debug\MercamaxApp.MainForm.resources
 D:\Users\Usuario\Desktop\prac1\prac2\Pedro-Moreno-Uribe\MercamaxApp\MercamaxApp\MercamaxApp\obj\Debug\MercamaxApp.Properties.Resources.resources
