@@ -2365,56 +2365,6 @@ RETURN 0]]></Value>
 				<Property Name="HeaderContents" Value="CREATE VIEW [dbo].[VerInventario]&#xD;&#xA;&#x9;AS" />
 			</Annotation>
 		</Element>
-		<Element Type="SqlView" Name="[dbo].[VerPorductoPrecio]">
-			<Property Name="QueryScript">
-				<Value><![CDATA[
-SELECT 	id_producto,nombre_producto FROM Producto]]></Value>
-			</Property>
-			<Property Name="IsAnsiNullsOn" Value="True" />
-			<Relationship Name="Columns">
-				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[VerPorductoPrecio].[id_producto]">
-						<Relationship Name="ExpressionDependencies">
-							<Entry>
-								<References Name="[dbo].[Producto].[id_producto]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-				<Entry>
-					<Element Type="SqlComputedColumn" Name="[dbo].[VerPorductoPrecio].[nombre_producto]">
-						<Relationship Name="ExpressionDependencies">
-							<Entry>
-								<References Name="[dbo].[Producto].[nombre_producto]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="QueryDependencies">
-				<Entry>
-					<References Name="[dbo].[Producto]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Producto].[id_producto]" />
-				</Entry>
-				<Entry>
-					<References Name="[dbo].[Producto].[nombre_producto]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="Schema">
-				<Entry>
-					<References ExternalSource="BuiltIns" Name="[dbo]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SysCommentsObjectAnnotation">
-				<Property Name="Length" Value="93" />
-				<Property Name="StartLine" Value="1" />
-				<Property Name="StartColumn" Value="1" />
-				<Property Name="HeaderContents" Value="CREATE VIEW [dbo].[VerPorductoPrecio]&#xD;&#xA;AS" />
-				<Property Name="FooterContents" Value=";" />
-			</Annotation>
-		</Element>
 		<Element Type="SqlProcedure" Name="[dbo].[VerProductoBodega]">
 			<Property Name="BodyScript">
 				<Value><![CDATA[
@@ -2521,6 +2471,68 @@ RETURN 0]]></Value>
 				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[VerProductoGondola]&#xD;&#xA;&#x9;@codProd int&#xD;&#xA;&#x9;&#xD;&#xA;AS" />
 			</Annotation>
 		</Element>
+		<Element Type="SqlView" Name="[dbo].[VerProductoPrecio]">
+			<Property Name="QueryScript">
+				<Value><![CDATA[
+	
+	SELECT id_producto,nombre_producto,precio FROM Producto]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="Columns">
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[VerProductoPrecio].[id_producto]">
+						<Relationship Name="ExpressionDependencies">
+							<Entry>
+								<References Name="[dbo].[Producto].[id_producto]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[VerProductoPrecio].[nombre_producto]">
+						<Relationship Name="ExpressionDependencies">
+							<Entry>
+								<References Name="[dbo].[Producto].[nombre_producto]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[VerProductoPrecio].[precio]">
+						<Relationship Name="ExpressionDependencies">
+							<Entry>
+								<References Name="[dbo].[Producto].[precio]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="QueryDependencies">
+				<Entry>
+					<References Name="[dbo].[Producto]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Producto].[id_producto]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Producto].[nombre_producto]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[Producto].[precio]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="103" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE VIEW [dbo].[VerProductoPrecio]&#xD;&#xA;&#x9;AS" />
+			</Annotation>
+		</Element>
 		<Element Type="SqlView" Name="[dbo].[VerProductos]">
 			<Property Name="QueryScript">
 				<Value><![CDATA[
@@ -2564,10 +2576,11 @@ RETURN 0]]></Value>
 				</Entry>
 			</Relationship>
 			<Annotation Type="SysCommentsObjectAnnotation">
-				<Property Name="Length" Value="84" />
+				<Property Name="CreateOffset" Value="12" />
+				<Property Name="Length" Value="96" />
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
-				<Property Name="HeaderContents" Value="CREATE VIEW [dbo].[VerProductos]&#xD;&#xA;&#x9;AS" />
+				<Property Name="HeaderContents" Value="&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;CREATE VIEW [dbo].[VerProductos]&#xD;&#xA;&#x9;AS" />
 			</Annotation>
 		</Element>
 		<Element Type="SqlProcedure" Name="[dbo].[VerPuntos]">
