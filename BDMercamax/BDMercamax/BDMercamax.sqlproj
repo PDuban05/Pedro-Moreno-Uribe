@@ -58,6 +58,7 @@
     <Folder Include="Properties" />
     <Folder Include="vista" />
     <Folder Include="procedimientos" />
+    <Folder Include="procedimientos2" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Proveedor.sql" />
@@ -82,6 +83,12 @@
     <Build Include="procedimientos\CrearCliente.sql" />
     <Build Include="procedimientos\CrearFactura.sql" />
     <Build Include="procedimientos\GetIvaPuntos.sql" />
+    <Build Include="vista\VerInventario.sql" />
+    <Build Include="procedimientos2\CrearVenta.sql" />
+    <Build Include="procedimientos2\GetFacturas.sql" />
+    <Build Include="procedimientos2\MoverAgondola.sql" />
+    <Build Include="procedimientos2\ComprarBodega.sql" />
+    <Build Include="procedimientos2\GetInfoCompra.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BDMercamax.refactorlog" />

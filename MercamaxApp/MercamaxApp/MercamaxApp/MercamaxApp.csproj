@@ -52,6 +52,12 @@
     <Compile Include="AddClienteForm.Designer.cs">
       <DependentUpon>AddClienteForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ComprarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ComprarForm.Designer.cs">
+      <DependentUpon>ComprarForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +74,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddClienteForm.resx">
       <DependentUpon>AddClienteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ComprarForm.resx">
+      <DependentUpon>ComprarForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
